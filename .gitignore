@@ -1,2 +1,37 @@
-# Google App Engine generated folder
-appengine-generated/
+# Node / JS
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+/dist
+/build
+/.turbo
+/.cache
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Next.js / Expo / React Native
+/.next
+/out
+.expo
+.expo-shared
+/web-build/
+
+# Editor / OS
+.vscode/
+.DS_Store
+*.log
+
+# Backend uploads and generated media (do not commit large files)
+uploads/
+tmp/
+*.mp4
+*.mov
+*.wav
+*.zip
+
+# Misc
+coverage/
