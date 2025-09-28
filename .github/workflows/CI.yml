@@ -1,0 +1,40 @@
+cat > .github/workflows/ci.yml <<'EOF'
+name: CI
+
+on:
+  push:
+    branches: [ main, add-scaffold-and-docs ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install backend deps (if any)
+        run: |
+          if [ -f backend/requirements.txt ]; then python -m pip install -r backend/requirements.txt; fi
+      - name: Run backend smoke test
+        run: |
+          if [ -f backend/app/main.py ]; then python -c "print('backend placeholder OK')"; fi
+
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install frontend deps (if any)
+        run: |
+          if [ -f frontend/package.json ]; then cd frontend && npm ci; fi
+      - name: Frontend smoke test
+        run: |
+          echo "frontend placeholder OK"
+EOF
