@@ -1,0 +1,9 @@
+cat > backend/app/main.py <<'EOF'
+from fastapi import FastAPI
+
+app = FastAPI(title="AI-video-studio — backend (placeholder)")
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "message": "backend placeholder running"}
+EOF
